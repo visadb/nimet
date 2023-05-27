@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 
 import csv
-
+import os
 
 def read_names(filename):
     with open(filename) as f:
@@ -393,8 +393,39 @@ filtered = {nimi: yleisyys for nimi, yleisyys in nimet.items()
             if any(f(nimi, yleisyys) for f in sallivat_suotimet)
             or all(not f(nimi, yleisyys) for f in poissulkevat_suotimet)}
 
-print(f"{'Nimi':6} {'Miehiä':6} {'Naisia':6}")
-print(f"{'----':6} {'------':6} {'------':6}")
+def tuple_sum(tuples):
+    return tuple(sum(zipped) for zipped in zip(*tuples))
+def nimipalveluyleisyyden_minimi_ja_maksimi(nimipalveluyleisyys):
+    if nimipalveluyleisyys == "alle 5":
+        return 1, 4
+    else:
+        return int(nimipalveluyleisyys), int(nimipalveluyleisyys)
+
+def muotoile_vaihteluvali(minimi, maksimi):
+    if minimi == maksimi:
+        return str(minimi)
+    else:
+        return f"{minimi}-{maksimi}"
+def laske_nimen_yleisyys_alkaen_2010(nimipalvelu_data):
+    miehet_min, miehet_max = tuple_sum([nimipalveluyleisyyden_minimi_ja_maksimi(d) for d in [nimipalvelu_data[0], nimipalvelu_data[2]]])
+    naiset_min, naiset_max = tuple_sum([nimipalveluyleisyyden_minimi_ja_maksimi(d) for d in [nimipalvelu_data[1], nimipalvelu_data[3]]])
+    return muotoile_vaihteluvali(miehet_min, miehet_max), muotoile_vaihteluvali(naiset_min, naiset_max)
+
+def hae_nimen_yleisyysdata_alkaen_2010_nimipalvelusta(nimi):
+    cache_file_path = f"nimipalvelu_cache/{nimi}"
+    if os.path.isfile(cache_file_path):
+        with open(cache_file_path) as f:
+            return [l for l in f.read().split("\n") if l]
+    else:
+        data = os.popen(f"curl -s 'https://verkkopalvelu.vrk.fi/nimipalvelu/nimipalvelu_etunimihaku.asp?L=1' --data-raw 'nimi={nimi}&submit2=HAE'|grep -A12 -e '^2010-19' -e '^2020-'|sed -n -e 5p -e 9p -e 19p -e 23p").read()
+        with open(cache_file_path, "w") as f:
+            f.write(data)
+        return hae_nimen_yleisyysdata_alkaen_2010_nimipalvelusta(nimi)
+
+header = f"{'Nimi':6} {'Miehiä':6} {'Naisia':6} {'Miehiä 2010-':>12} {'Naisia 2010-':>12}"
+print(header)
+print("-" * len(header))
 for nimi, (m, n) in sorted(filtered.items()):
-    print(f"{nimi:6} {m:6} {n:6}")
+    miehia_alkaen_2010, naisia_alkaen_2010 = laske_nimen_yleisyys_alkaen_2010(hae_nimen_yleisyysdata_alkaen_2010_nimipalvelusta(nimi))
+    print(f"{nimi:6} {m:6} {n:6} {miehia_alkaen_2010:>12} {naisia_alkaen_2010:>12}")
 print(f"Yhteensä {len(filtered)} nimeä")
