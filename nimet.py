@@ -392,6 +392,8 @@ filtered = {nimi: yleisyys for nimi, yleisyys in nimet.items()
             if any(f(nimi, yleisyys) for f in sallivat_suotimet)
             or all(not f(nimi, yleisyys) for f in poissulkevat_suotimet)}
 
+print(f"{'Nimi':6} {'Miehiä':6} {'Naisia':6}")
+print(f"{'----':6} {'------':6} {'------':6}")
 for nimi, (m, n) in sorted(filtered.items()):
-    print(f"{nimi:6} {m:4} {n:4}")
+    print(f"{nimi:6} {m:6} {n:6}")
 print(f"Yhteensä {len(filtered)} nimeä")
