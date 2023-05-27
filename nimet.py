@@ -20,6 +20,7 @@ konsonantit = "bcdfghjklmnpqrstvwxz"
 
 erikseen_sallitut = set([
     'Aapa',
+    'Kuu',
     'Oku',
     'Puro',
     'Taku',

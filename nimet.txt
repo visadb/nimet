@@ -21,6 +21,7 @@ Kaiku      30      6
 Kauko    6140      0
 Kimi     1463      0
 Konsta   4698      0
+Kuu         8     61
 Kuura      78    115
 Lassi    4962      0
 Leino     187      7
@@ -47,4 +48,4 @@ Timi     1360      0
 Topi     4588      0
 Touko    1388     10
 Valo      398     95
-Yhteensä 47 nimeä
+Yhteensä 48 nimeä
