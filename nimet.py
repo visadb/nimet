@@ -4,6 +4,8 @@
 import csv
 import os
 
+# todo: yleisyys 2020-perusteella
+
 def read_names(filename):
     with open(filename) as f:
         namedata = csv.reader(f, delimiter=";")
@@ -401,6 +403,25 @@ poissuljetut = set([
     'Voima',
 ])
 
+pisteet = {
+    'Aimo'  : (2, 0),
+    'Aku'   : (5, 0),
+    'Anssi' : (3, 0),
+    'Asko'  : (2, 0),
+    'Atso'  : (1, 0),
+    'Ilpo'  : (2, 0),
+    'Kaapo' : (4, 0),
+    'Kauko' : (2, 0),
+    'Konsta': (2, 0),
+    'Lassi' : (5, 0),
+    'Leino' : (3, 5),
+    'Mauno' : (1, 5),
+    'Ossi'  : (4, 0),
+    'Timi'  : (3, 0),
+    'Topi'  : (5, 0),
+    'Touko' : (2, 5)
+}
+
 sallivat_suotimet = [
     lambda n, _: n in erikseen_sallitut,  # erikseen sallitut
 ]
@@ -450,10 +471,10 @@ def hae_nimen_yleisyysdata_alkaen_2010_nimipalvelusta(nimi):
             f.write(data)
         return hae_nimen_yleisyysdata_alkaen_2010_nimipalvelusta(nimi)
 
-header = f"{'Nimi':6} {'Miehiä':6} {'Naisia':6} {'Miehiä 2010-':>12} {'Naisia 2010-':>12}"
+header = f"{'Nimi':6} {'V':1} {'J':1} {'Y':1} {'Miehiä':6} {'Naisia':6} {'Miehiä 2010-':>12} {'Naisia 2010-':>12}"
 print(header)
 print("-" * len(header))
-for nimi, (m, n) in sorted(filtered.items()):
+for nimi, (m, n) in sorted(filtered.items(), key=lambda i: sum(pisteet[i[0]]), reverse=True):
     miehia_alkaen_2010, naisia_alkaen_2010 = laske_nimen_yleisyys_alkaen_2010(hae_nimen_yleisyysdata_alkaen_2010_nimipalvelusta(nimi))
-    print(f"{nimi:6} {m:6} {n:6} {miehia_alkaen_2010:>12} {naisia_alkaen_2010:>12}")
+    print(f"{nimi:6} {pisteet[nimi][0]} {pisteet[nimi][1]} {sum(pisteet[nimi])} {m:6} {n:6} {miehia_alkaen_2010:>12} {naisia_alkaen_2010:>12}")
 print(f"Yhteensä {len(filtered)} nimeä")
