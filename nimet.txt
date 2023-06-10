@@ -1,51 +1,19 @@
 Nimi   Miehiä Naisia Miehiä 2010- Naisia 2010-
 ----------------------------------------------
-Aalto      40     15           63          1-4
-Aapa        6      0            8          1-4
-Aapo     5655      0         2513            0
-Aaro     5618      7         2188            0
-Aatu     4351      0         2252            0
 Aimo     4197      5          433            0
 Aku      2581      6          649          1-4
-Alpo     3140      0          572            0
-Ami       197     61           80          2-8
 Anssi    5696      0          136            0
 Asko     5066      0          126            0
 Atso      595      0          216            0
-Eeli     4362     24         3884            0
-Iipo       23      0           18            0
 Ilpo     3615      0          197            0
-Isto      693      0           23            0
 Kaapo    2058      0         1256            0
-Kaiku      30      6           28          2-8
 Kauko    6140      0          487          1-4
-Kimi     1463      0          463            0
 Konsta   4698      0         1872            0
-Kuu         8     61        12-15        15-18
-Kuura      78    115           86           51
 Lassi    4962      0          767            0
 Leino     187      7          178          1-4
-Lenni    3841      7         3159            0
-Luka     3361     28         2531          1-4
 Mauno    3768      0          949            0
-Miki      557     14          192          1-4
-Oiva     3779      0         3008            0
-Oku        17      0           18            0
 Ossi     5897      0          782            0
-Panu     2364      0           91            0
-Peeti      27      0           26            0
-Peetu    2638      0         2087            0
-Pete      310      0        15-18          1-4
-Puro       11     11          2-8          2-8
-Saku     3936      7          645            0
-Sauli    3639      0          212            0
-Sipi       58      6           20          1-4
-Taku        8      0          2-8          2-8
-Tami      115      6        15-18          1-4
-Tarmo    3920      0          340            0
-Terho    1861      5          138            0
 Timi     1360      0          384            0
 Topi     4588      0         1197            0
 Touko    1388     10          684            0
-Valo      398     95          769           42
-Yhteensä 48 nimeä
+Yhteensä 16 nimeä
