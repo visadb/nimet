@@ -405,12 +405,12 @@ poissuljetut = set([
 
 pisteet = {
     'Aimo'  : (2, 0),
-    'Aku'   : (5, 0),
-    'Anssi' : (3, 0),
+    'Aku'   : (4, 0),
+    'Anssi' : (4, 0),
     'Asko'  : (2, 0),
     'Atso'  : (1, 0),
     'Ilpo'  : (2, 0),
-    'Kaapo' : (4, 0),
+    'Kaapo' : (3, 0),
     'Kauko' : (2, 0),
     'Konsta': (2, 0),
     'Lassi' : (5, 0),
