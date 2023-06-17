@@ -426,16 +426,21 @@ sallivat_suotimet = [
     lambda n, _: n in erikseen_sallitut,  # erikseen sallitut
 ]
 
+vokaalit = "aeiouyäö"
+vokaalieriparit = [a + b for a in vokaalit for b in vokaalit if a != b]
+
 poissulkevat_suotimet = [
-    lambda n, yleisyys: yleisyys[0] < 20 or yleisyys[0] >= 7200,  # liian harvinaiset ja suositut pois
-    lambda n, yleisyys: yleisyys[1] > 3 * yleisyys[0],  # naisia paljon enemmän kuin miehiä
+    #lambda n, yleisyys: yleisyys[0] < 20 or yleisyys[0] >= 7200,  # liian harvinaiset ja suositut pois
+    #lambda n, yleisyys: yleisyys[1] > 3 * yleisyys[0],  # naisia paljon enemmän kuin miehiä
     lambda n, _: len(n) < 3 or len(n) > 6,  # lyhyet ja pitkät pois
-    lambda n, _: n[0].lower() in "hjr",  # Kielletyt alkukirjaimet
-    lambda n, _: n[-1] in konsonantit,  # päättyy konsonanttiin
+    #lambda n, _: n[0].lower() in "hjr",  # Kielletyt alkukirjaimet
+    #lambda n, _: n[-1] in konsonantit,  # päättyy konsonanttiin
     lambda n, _: any(c in n.lower() for c in "bcdéfgqwxzyöäå"),  # kielletyt kirjaimet
-    lambda n, _: any(s in n.lower() for s in ["kk", "ll", "pp", "rn", "rr", "tt"]),  # kielletyt kirjainyhdistelmät
-    lambda n, _: n in poissuljetut,
-    lambda n, _: n in ei_etunimeksi,
+    #lambda n, _: any(s in n.lower() for s in ["kk", "ll", "pp", "rn", "rr", "tt"]),  # kielletyt kirjainyhdistelmät
+    #lambda n, _: n in poissuljetut,
+    #lambda n, _: n in ei_etunimeksi,
+    # two different consecutive vowels
+    lambda n, _: not any(vokaalieripari in n for vokaalieripari in vokaalieriparit),
 ]
 
 filtered = {nimi: yleisyys for nimi, yleisyys in nimet.items()
@@ -471,10 +476,13 @@ def hae_nimen_yleisyysdata_alkaen_2010_nimipalvelusta(nimi):
             f.write(data)
         return hae_nimen_yleisyysdata_alkaen_2010_nimipalvelusta(nimi)
 
-header = f"{'Nimi':6} {'V':1} {'J':1} {'Y':1} {'Miehiä':6} {'Naisia':6} {'Miehiä 2010-':>12} {'Naisia 2010-':>12}"
+header = f"{'Nimi':6} {'Miehiä':6} {'Naisia':6}"
+#header = f"{'Nimi':6} {'V':1} {'J':1} {'Y':1} {'Miehiä':6} {'Naisia':6} {'Miehiä 2010-':>12} {'Naisia 2010-':>12}"
 print(header)
 print("-" * len(header))
-for nimi, (m, n) in sorted(filtered.items(), key=lambda i: sum(pisteet[i[0]]), reverse=True):
-    miehia_alkaen_2010, naisia_alkaen_2010 = laske_nimen_yleisyys_alkaen_2010(hae_nimen_yleisyysdata_alkaen_2010_nimipalvelusta(nimi))
-    print(f"{nimi:6} {pisteet[nimi][0]} {pisteet[nimi][1]} {sum(pisteet[nimi])} {m:6} {n:6} {miehia_alkaen_2010:>12} {naisia_alkaen_2010:>12}")
+for nimi, (m, n) in sorted(filtered.items()):
+    print(f"{nimi:6} {m:6} {n:6}")
+#for nimi, (m, n) in sorted(filtered.items(), key=lambda i: sum(pisteet[i[0]]), reverse=True):
+#    miehia_alkaen_2010, naisia_alkaen_2010 = laske_nimen_yleisyys_alkaen_2010(hae_nimen_yleisyysdata_alkaen_2010_nimipalvelusta(nimi))
+#    print(f"{nimi:6} {pisteet[nimi][0]} {pisteet[nimi][1]} {sum(pisteet[nimi])} {m:6} {n:6} {miehia_alkaen_2010:>12} {naisia_alkaen_2010:>12}")
 print(f"Yhteensä {len(filtered)} nimeä")
