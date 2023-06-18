@@ -1,5 +1,15 @@
 Nimi   Miehiä Naisia
 --------------------
+Aiham      11      0
+Ailo       28      0
+Ailu       25      0
+Aiman      32      7
+Aimo     4197      5
+Ain         5      0
+Aito       64      0
+Aitor       6      0
+Aivar      21      0
+Aivo        8      0
 Alain      26      0
 Alieu      14      0
 Amiel       9      0
@@ -15,8 +25,28 @@ Ariel      66    271
 Ario       13      0
 Arion      14      0
 Arshia      5      0
+Auku       13      0
+Aulis    2461      0
+Aulo        6      0
+Auno      102      0
+Aurel      12      0
+Auri       10    345
+Auro       11      0
+Auron       5      0
+Aurora      8  22923
+Aus         7      0
+Austin     27      0
+Auvo      816     15
 Aviel       7      0
 Eelia      11     59
+Eijo        8      0
+Eikka     170      0
+Eilo       37      0
+Einar     304      0
+Einari    393      0
+Eino    10645      5
+Eirik      57      0
+Eitan       9      0
 Elai        7      0
 Elia      896     60
 Eliah      40      0
@@ -62,6 +92,9 @@ Hosein      7      0
 Huima      16      0
 Husein     31      8
 Iain        7      0
+Iakov       8      0
+Ian       279      6
+Iason       7      0
 Iisai      11      0
 Ilai       10      0
 Ilia       80     10
@@ -69,6 +102,7 @@ Ilian      10      0
 Ilias      79      0
 Illia       5      0
 Ioan       17      0
+Ion        15      0
 Iouri      28      0
 Isai        7      0
 Isaiah     14      0
@@ -76,6 +110,7 @@ Ismael     41     19
 Ismail    208     86
 Israel     18      0
 Itai        6      0
+Iurii      20      0
 Jael        9     52
 Jai         5      0
 Jaime      36      6
@@ -269,6 +304,8 @@ Nooah       6      0
 Nooe        7      0
 Nouh        5      0
 Nour       23     75
+Oisín       6      0
+Oiva     3779      0
 Olai        6      0
 Olaus       8      0
 Ollie      14      0
@@ -276,6 +313,12 @@ Ontrei      6      0
 Orion      15     20
 Osei        5      5
 Ossian    187      0
+Oula      801     14
+Oulas       5      0
+Oumar       8      0
+Ousman     21      0
+Outa        6      9
+Outi        8  10067
 Paolo      62      0
 Pau         9      0
 Paul     1815      0
@@ -424,6 +467,8 @@ Tuomo   10155      0
 Tuovi      25   1331
 Umair       5      0
 Unai        5      0
+Uolevi    110      0
+Uoti       14      0
 Uriel       6      0
 Vaito      44      0
 Valio      46      0
@@ -442,4 +487,4 @@ Vilius      8      0
 Vinnie      8      0
 Voima      26      0
 Voitto   2046      0
-Yhteensä 442 nimeä
+Yhteensä 487 nimeä

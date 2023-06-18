@@ -440,7 +440,7 @@ poissulkevat_suotimet = [
     #lambda n, _: n in poissuljetut,
     #lambda n, _: n in ei_etunimeksi,
     # two different consecutive vowels
-    lambda n, _: not any(vokaalieripari in n for vokaalieripari in vokaalieriparit),
+    lambda n, _: not any(vokaalieripari in n.lower() for vokaalieripari in vokaalieriparit),
 ]
 
 filtered = {nimi: yleisyys for nimi, yleisyys in nimet.items()
