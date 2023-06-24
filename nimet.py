@@ -12,9 +12,19 @@ def read_names(filename):
         next(namedata)  # ignore header
         return {line[0]: int(line[1].replace(u"\U000000A0", "")) for line in namedata}
 
+def lue_sukunimet():
+    with open("sukunimitilasto-2023-02-03-dvv/Nimet-Table 1.csv") as f:
+        namedata = csv.reader(f, delimiter=";")
+        next(namedata)  # ignore header
+        return {line[0]: int(line[1].replace(u"\U000000A0", "")) for line in namedata}
 
 miesten_ekat = read_names("etunimitilasto-2023-02-03-dvv/Miehet ens-Table 1.csv")
 naisten_nimet = read_names("etunimitilasto-2023-02-03-dvv/Naiset kaikki-Table 1.csv")
+
+#sukunimet = lue_sukunimet()
+#sukunimietunimet = sorted([(nimi, lkm, sukunimet[nimi]) for nimi, lkm in miesten_ekat.items() if nimi in sukunimet and 5*lkm < sukunimet[nimi] and lkm > 50])
+#for nimi, lkm, sukunimet in sukunimietunimet:
+#    print(nimi, lkm, sukunimet)
 
 nimet = {nimi: (miehet, nimi in naisten_nimet and naisten_nimet[nimi] or 0) for nimi, miehet in miesten_ekat.items()}
 
