@@ -61,12 +61,14 @@ poissuljetut = set([
     'Ahto',
     'Ailo',
     'Ailu',
+    'Aimo',
     'Aito',
     'Ake',
     'Akira',
     'Ako',
     'Akseli',
     'Aksu',
+    'Aku',
     'Akusti',
     'Alaa',
     'Ale',
@@ -82,6 +84,7 @@ poissuljetut = set([
     'Amine',
     'Ano',
     'Ante',
+    'Anssi',
     'Antero',
     'Anto',
     'Antoni',
@@ -160,6 +163,7 @@ poissuljetut = set([
     'Isto',
     'Iurii',
     'Ivo',
+    'Kaapo',
     'Kaapro',
     'Kaarle',
     'Kaarlo',
@@ -171,6 +175,7 @@ poissuljetut = set([
     'Karlo',
     'Karo',
     'Kassu',
+    'Kauko',
     'Kauno',
     'Kauri',
     'Keimo',
@@ -215,6 +220,7 @@ poissuljetut = set([
     'Mateo',
     'Matheo',
     'Matvei',
+    'Mauno',
     'Maunu',
     'Mauro',
     'Meo',
@@ -361,11 +367,13 @@ poissuljetut = set([
     'Theo',
     'Thure',
     'Tiko',
+    'Timi',
     'Tino',
     'Tito',
     'Toimi',
     'Toma',
     'Tommie',
+    'Topi',
     'Tore',
     'Torsti',
     'Touho',
@@ -417,19 +425,22 @@ poissuljetut = set([
     'Voima',
 ])
 
+visan_jarjestys = [
+    'Lassi',
+    'Leino',
+    'Touko',
+    'Ossi',
+]
+
+jennin_jarjestys = [
+    'Touko',
+    'Leino',
+    'Ossi',
+    'Lassi',
+]
+
 pisteet = {
-    'Aimo'  : (2, 3),
-    'Aku'   : (4, 2),
-    'Anssi' : (4, 1),
-    'Kaapo' : (3, 2),
-    'Kauko' : (2, 3),
-    'Lassi' : (5, 2),
-    'Leino' : (3, 5),
-    'Mauno' : (1, 5),
-    'Ossi'  : (4, 3),
-    'Timi'  : (3, 1),
-    'Topi'  : (5, 2),
-    'Touko' : (2, 5)
+    n: (len(visan_jarjestys) - visan_jarjestys.index(n), len(visan_jarjestys) - jennin_jarjestys.index(n)) for n in visan_jarjestys
 }
 
 sallivat_suotimet = [
@@ -481,10 +492,10 @@ def hae_nimen_yleisyysdata_alkaen_2010_nimipalvelusta(nimi):
             f.write(data)
         return hae_nimen_yleisyysdata_alkaen_2010_nimipalvelusta(nimi)
 
-header = f"{'Nimi':6} {'V':1} {'J':1} {'Y':1} {'Miehiä':6} {'Naisia':6} {'Miehiä 2010-':>12} {'Naisia 2010-':>12}"
+header = f"{'Nimi':6} {'V':2} {'J':2} {'Y':2} {'Miehiä':6} {'Naisia':6} {'Miehiä 2010-':>12} {'Naisia 2010-':>12}"
 print(header)
 print("-" * len(header))
 for nimi, (m, n) in sorted(filtered.items(), key=lambda i: sum(pisteet[i[0]]), reverse=True):
     miehia_alkaen_2010, naisia_alkaen_2010 = laske_nimen_yleisyys_alkaen_2010(hae_nimen_yleisyysdata_alkaen_2010_nimipalvelusta(nimi))
-    print(f"{nimi:6} {pisteet[nimi][0]} {pisteet[nimi][1]} {sum(pisteet[nimi])} {m:6} {n:6} {miehia_alkaen_2010:>12} {naisia_alkaen_2010:>12}")
+    print(f"{nimi:6} {pisteet[nimi][0]:2} {pisteet[nimi][1]:2} {sum(pisteet[nimi]):2} {m:6} {n:6} {miehia_alkaen_2010:>12} {naisia_alkaen_2010:>12}")
 print(f"Yhteensä {len(filtered)} nimeä")
